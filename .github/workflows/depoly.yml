@@ -1,0 +1,19 @@
+name: depoly
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: muinmomin/webhook-action@v1.0.0
+        with:
+          url: ${{ secrets.PORTAINER_PULL_HOOK }}
+
+      #- uses: actions/checkout@v2
+      
