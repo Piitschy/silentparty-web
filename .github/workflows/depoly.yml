@@ -19,7 +19,7 @@ jobs:
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           LOCAL_DIR: ./html/
-          REMOTE_DIR: ${{ secrets.DOCKER_VOL_PATH }}/silentparty-web_lap/
+          REMOTE_DIR: ${{ secrets.DOCKER_VOL_PATH }}/silentparty-web_lap/_data/
           METHOD: sftp
           PORT: ${{ secrets.PORT }}
 
