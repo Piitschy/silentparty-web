@@ -6,7 +6,7 @@ services:
     ports:
       - 9080:80
     volumes:
-      - ./html:/var/www/html
-#
-#volumes:
-#  lap:
+      - lap:/var/www/html
+
+volumes:
+  lap:
