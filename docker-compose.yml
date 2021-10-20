@@ -4,7 +4,7 @@ services:
     image: fauria/lap:latest
     restart: always
     ports:
-      - 9080:80
+      - ${PORT_SPACE}80:80
     volumes:
       - lap:/var/www/html
 
