@@ -1,11 +1,8 @@
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+  release:
+    types: [created]
 
-name: deploy
+name: deploy on release
 jobs:
   build:
     runs-on: ubuntu-latest

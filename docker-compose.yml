@@ -7,6 +7,13 @@ services:
       - ${PORT_SPACE}80:80
     volumes:
       - lap:/var/www/html
+  lap-demo:
+    image: fauria/lap:latest
+    restart: always
+    ports:
+      - ${PORT_SPACE}80:81
+    volumes:
+      - lap-demo:/var/www/html
 
 volumes:
   lap:
