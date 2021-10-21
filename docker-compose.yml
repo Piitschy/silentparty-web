@@ -11,7 +11,7 @@ services:
     image: fauria/lap:latest
     restart: always
     ports:
-      - ${PORT_SPACE}80:81
+      - ${PORT_SPACE}81:80
     volumes:
       - lap-demo:/var/www/html
 
