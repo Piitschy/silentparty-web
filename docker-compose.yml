@@ -47,3 +47,5 @@ services:
 volumes:
   lap:
   lap-demo:
+  mysql:
+  strapi:
