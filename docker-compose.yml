@@ -42,18 +42,6 @@ services:
       MYSQL_DATABASE: strapi
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
-      
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    links:
-      - mysql
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      PMA_ARBITRARY: 1
-    restart: always
-    ports:
-      - '${PORT_SPACE}81:80'
 
 volumes:
   lap:
