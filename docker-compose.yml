@@ -43,6 +43,20 @@ services:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
 
+ 
+ ​  ​myadmin​: 
+ ​    ​depends_on​: 
+ ​      - ​mysql
+ ​    ​image​: ​phpmyadmin/phphpmyadmi
+ ​    ​restart​: ​always 
+ ​    ​links​: 
+ ​      - ​mysql
+ ​    ​ports​: 
+ ​      - ​'​${PORT_SPACE}89:80​' 
+ ​    ​environment​: 
+ ​      ​PMA_HOST​: ​mysql:3306 
+ ​      ​MYSQL_ROOT_PASSWORD​: ​${DB_PASSWORD_ROOT}
+
 
 volumes:
   lap:
