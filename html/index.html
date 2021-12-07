@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&amp;display=swap">
     <link rel="stylesheet" href="assets/css/Responsive-Youtube-Embed.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./js/vue.js"></script>
 </head>
 
-<body class="d-flex flex-column align-items-center" style="background: #111;overflow-x: hidden;color: #ffffff;margin-left: auto;margin-right: auto;">
+<body id="app" class="d-flex flex-column align-items-center" style="background: #111;overflow-x: hidden;color: #ffffff;margin-left: auto;margin-right: auto;">
     <div class="container d-flex flex-column justify-content-center justify-content-lg-center" style="height: 100vh;padding: 0;position: relative;max-width: none;width: 100%;font-family: 'Bebas Neue', serif;">
         <h1 style="position: absolute;top: 10px;left: 10px;">Silent Party</h1><svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px" height="600px" viewBox="0 0 800 800" enable-background="new 0 0 800 800" xml:space="preserve"><filter id="f1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="2"></feGaussianBlur></filter><filter id="f3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="12"></feGaussianBlur></filter><filter id="f2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="52"></feGaussianBlur></filter><radialGradient id="SVGID_1_" cx="621.6309" cy="203.856" r="291.5613" gradientTransform="matrix(1 0 0 -1 -220.9902 604.4004)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color: rgb(255, 180, 31);"></stop><stop offset="0.914" style="stop-color: rgb(255, 180, 31); stop-opacity: 0.9624;"></stop><stop offset="1" style="stop-color: rgb(255, 180, 31); stop-opacity: 0;"></stop></radialGradient><circle id="b" fill="none" stroke="#FFFFFF" stroke-width="35" stroke-miterlimit="10" cx="400.641" cy="400.544" r="250.561"></circle><circle id="a" fill="none" stroke="url(#SVGID_1_)" stroke-width="40" stroke-miterlimit="10" cx="400.641" cy="400.544" r="271.561"></circle><circle id="c" fill="none" stroke="url(#SVGID_1_)" stroke-width="40" stroke-miterlimit="10" cx="400.641" cy="400.544" r="271.561"></circle><g><path class="imun" fill="#010202" d="M391.541,157c6.604,0,13.207,0,19.811,0c1.186,0.731,2.477,0.391,3.733,0.376
 		c9.61,0.458,19.142,1.616,28.623,3.252c14.203,2.451,28.06,6.162,41.592,11.112c64.992,23.774,116.992,73.997,142.896,138.146
@@ -84,7 +86,7 @@
 
 			l3.188-0.62c2.349-0.455,3.371,0.604,3.371,3.462L498.707,542.421L498.707,542.421z"></path></g></g></svg>
         <div style="align-self: center;transform: translateY(-90px);">
-            <h1 style="/*position: absolute;*/font-size: 40px;">Locked Down</h1>
+            <h1 style="/*position: absolute;*/font-size: 40px;">{{ partydate }}</h1>
         </div><video class="header_video" style="width: 100%;position: absolute;height: 100%;top: 0;" muted="" loop="" autoplay="" poster="https://www.silentparty-hannover.de/images/frame1.png">
             <source src="https://www.silentparty-hannover.de/images/video_bg_hd.mp4" type="video/mp4">
         </video>
@@ -169,6 +171,14 @@
         <p style="color: rgb(0,0,0);">Impressun | Datemschutz</p><img src="assets/img/nobg%20Headphone-male%201.png" style="margin-left: auto;margin-right: 60px;max-width: 60vw;">
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- Import JS -->
+	<script src="./js/vue.js"></script>
+
+	<!-- Mount Vue -->
+	<script>
+		const mountedApp = app.mount('#app');
+	</script>
 </body>
 
 </html>
