@@ -1,0 +1,71 @@
+h1 {
+  color: white;
+}
+
+div {
+}
+
+.features.row {
+  margin-top: 32px;
+  margin-bottom: 64px;
+}
+
+div {
+}
+
+div {
+}
+
+.content-container {
+  margin: 120px 0;
+}
+
+@media (max-width: 576px) {
+  element.style {
+    height: 100vw;
+    background: linear-gradient(180deg, #111 0%, rgba(17,17,17,0) 20%), linear-gradient(0deg, #111 0%, rgba(17,17,17,0) 20%), linear-gradient(270deg, #111 0%, rgba(17,17,17,0) 42%), url("../../assets/img/IMG_3768%201.png") center / cover no-repeat, #111;
+  }
+}
+
+@media (max-width: 576px) {
+  img {
+    /*display: none;*/
+  }
+}
+
+@media (max-width: 768px) {
+  #ehrenamt {
+    background: linear-gradient(180deg, #111111 0%, rgba(17,17,17,0) 20%), linear-gradient(0deg, #111 0%, rgba(17,17,17,0) 20%), linear-gradient(270deg, #111 17%, rgba(17,17,17,0) 42%), url("../../assets/img/IMG_0103%202.png") -50vw / cover no-repeat, #111 !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .font-special {
+    font-size: 24px !important;
+  }
+}
+
+.font-special {
+  font-weight: bold;
+  font-size: 52px;
+  margin-top: 4px;
+}
+
+@media (min-width:576px) {
+  .container, .container-sm {
+    max-width: 1040px;
+    overflow: visible !important;
+  }
+}
+
+.header_video {
+  object-fit: cover;
+  z-index: -1;
+}
+
+#Ebene_1 {
+  /*margin: auto;*/
+  flex: 1 0 0.33vh;
+  align-self: center;
+}
+
