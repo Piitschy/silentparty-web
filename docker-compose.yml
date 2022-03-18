@@ -15,38 +15,70 @@ services:
     volumes:
       - lap-demo:/var/www/html
   
-  strapi:
-    image: strapi/strapi
+  database:
     restart: always
-    environment:
-      DATABASE_CLIENT: mysql
-      DATABASE_HOST: mysql
-      DATABASE_PORT: 3306
-      DATABASE_NAME: strapi
-      DATABASE_USERNAME: ${DB_USER}
-      DATABASE_PASSWORD: ${DB_PASSWORD}
-      DATABASE_SSL: 'false'
+    image: postgis/postgis:13-master
     volumes:
-      - strapi:/srv/app
-    ports:
-      - '${PORT_SPACE}37:1337'
-    depends_on:
-      - mysql
+      - db:/var/lib/postgresql/data
+    networks:
+      - directus
+    environment:
+      POSTGRES_USER: 'directus'
+      POSTGRES_PASSWORD: '${DB_PASSWORD}'
+      POSTGRES_DB: 'directus'
 
-  mysql:
-    image: mysql
+  cache:
     restart: always
-    command: mysqld --default-authentication-plugin=mysql_native_password
+    image: redis:6
+    networks:
+      - directus
+
+  directus:
+    restart: always
+    image: directus/directus:latest
+    ports:
+      - ${PORT_SPACE}55:8055
     volumes:
-      - mysql:/var/lib/mysql
+      - uploads:/directus/uploads
+    networks:
+      - directus
+    depends_on:
+      - cache
+      - database
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD_ROOT}
-      MYSQL_DATABASE: strapi
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      KEY: '${KEY}'
+      SECRET: '${SECRET}'
+
+      DB_CLIENT: 'pg'
+      DB_HOST: 'database'
+      DB_PORT: '5432'
+      DB_DATABASE: 'directus'
+      DB_USER: 'directus'
+      DB_PASSWORD: '${DB_PASSWORD}'
+
+      CACHE_ENABLED: 'true'
+      CACHE_STORE: 'redis'
+      CACHE_REDIS: 'redis://cache:6379'
+
+      ADMIN_EMAIL: '${ADMIN_EMAIL}'
+      ADMIN_PASSWORD: '${ADMIN_PASSWORD}'
+      
+      EMAIL_FROM: '${EMAIL_FROM}'
+      EMAIL_TRANSPORT: smtp
+      EMAIL_SMTP_HOST: mail
+      EMAIL_SMTP_PORT: 587
+      
+      REFRESH_TOKEN_COOKIE_SAME_SITE: '${REFRESH_TOKEN_COOKIE_SAME_SITE}'
+      REFRESH_TOKEN_COOKIE_SECURE: '${REFRESH_TOKEN_COOKIE_SECURE}'
+      # Make sure to set this in production
+      # (see https://docs.directus.io/reference/environment-variables/#general)
+      PUBLIC_URL: 'https://${PUBLIC_URL}'
+
+networks:
+  directus:
 
 volumes:
   lap:
   lap-demo:
-  mysql:
-  strapi:
+  db:
+  uploads:
