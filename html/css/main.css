@@ -13,6 +13,13 @@
     transform: translateY(-120px);
     font-family:bebasNeue;
 }
+
+.socialmedia a:nth-child(1) {
+    animation-delay: 1s;
+}
+
+
+
 .first.wrapper svg{
      flex: 1 0 0.33vh;
      align-self: center;
@@ -64,7 +71,7 @@
     display:flex;
     flex-direction:column;
     overflow:hidden;
-   // text-align:center;
+    text-align:center;
     z-index:2;
 
 }
