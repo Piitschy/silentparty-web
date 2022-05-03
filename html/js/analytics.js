@@ -31,7 +31,7 @@ function loadGAonConsent(){
       "dismiss": "Nope",
       "allow": "Cool",
       "link": "Rezept. (Datenschutzerklärung)",
-      "href": "./datenschutz.html"
+      "href": "./impressum.html"
     },
       onStatusChange: function(status, chosenBefore) {
       var type = this.options.type;
