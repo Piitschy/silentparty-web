@@ -1,12 +1,14 @@
 function loadGAonConsent(){
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'G-BNKHEWJ34M', 'auto');
-    ga('set', 'anonymizeIp', true);
-    ga('send', 'pageview');
     var gascript = document.createElement("script");
     gascript.async = true;
     gascript.src = "https://www.googletagmanager.com/gtag/js?id=G-BNKHEWJ34M";
-    document.getElementsByTagName("head")[0].appendChild(gascript, document.getElementsByTagName("head")[0]);               
+    document.getElementsByTagName("head")[0].appendChild(gascript, document.getElementsByTagName("head")[0]);   
+    
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-BNKHEWJ34M');
   }
   if (document.cookie.split(';').filter(function(item) {
       return item.indexOf('cookieconsent_status=allow') >= 0
