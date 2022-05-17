@@ -134,10 +134,23 @@
     
                 l3.188-0.62c2.349-0.455,3.371,0.604,3.371,3.462L498.707,542.421L498.707,542.421z"></path></g></g></svg>
 
-        <div  class="status">
+        <div  class="status"
+            x-data="{
+                counter: 0,
+                max: 100,
+                show: 50
+            }"
+            x-init="fetch('https://vvk.silentparty-hannover.de/counter')
+                    .then(response => response.json())
+                    .then(data => counter = data.counter)">
             <div class="traffic glass" v-if="data.workload.data.open" >
                 <div class="count">
-                    <span class="indicator" style="font-size: 50px;">1</span>
+                    <template x-if="show > max - counter">
+                        <span class="indicator" style="font-size: 50px;" x-text="max - counter"/>
+                    </template>
+                    <template x-if="show <= max - counter">
+                        <span class="indicator" style="font-size: 50px;">50+</span>
+                    </template>
                 </div>
                 <div class="title">Gutscheine übrig</div>
             </div>
