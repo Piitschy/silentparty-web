@@ -137,7 +137,7 @@
         <div  class="status"
             x-data="{
                 counter: 0,
-                max: 100,
+                max: 125,
                 show: 50
             }"
             x-init="fetch('https://vvk.silentparty-hannover.de/counter')
@@ -149,7 +149,7 @@
                         <span class="indicator" style="font-size: 50px;" x-text="max - counter"/>
                     </template>
                     <template x-if="show <= max - counter">
-                        <span class="indicator" style="font-size: 50px;">50+</span>
+                        <span class="indicator" style="font-size: 50px;" x-text="show + '+'"></span>
                     </template>
                 </div>
                 <div class="title">Gutscheine übrig</div>
