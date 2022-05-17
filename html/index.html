@@ -133,10 +133,19 @@
     
                 l3.188-0.62c2.349-0.455,3.371,0.604,3.371,3.462L498.707,542.421L498.707,542.421z"></path></g></g></svg>
 
-
+        <div  class="status">
+            <div class="traffic glass" v-if="data.workload.data.open" >
+                <div class="count">
+                    <span class="indicator" style="font-size: 50px;">1</span>
+                </div>
+                <div class="title">Gutscheine übrig</div>
+            </div>
+        </div>
         <div style="align-self: center;transform: translateY(-90px);">
             <h2 style="/*position: absolute;*/font-size: max(6vw,30pt);">28.05.2022</h2>
-        </div><video class="header_video" style="opacity:0; width: 100%;position: absolute;height: 100%;top: 0; transition: opacity 2s;" muted="" loop=""
+        </div>
+        
+        <video class="header_video" style="opacity:0; width: 100%;position: absolute;height: 100%;top: 0; transition: opacity 2s;" muted="" loop=""
             autoplay="" poster="images/frame1.png">
             <source src="images/video_bg_hd.mp4" type="video/mp4">
         </video>

@@ -2,6 +2,48 @@ h1 {
   color: white;
 }
 
+.status {
+  position: absolute;
+  top: 0px;
+  right: -175px;
+  margin: auto;
+  z-index: 500;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80vw;
+  max-width: 400px;
+}
+
+.traffic {
+  margin-top: 25px;
+}
+
+.glass {
+  padding: 17px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 12px rgb(77 77 77 / 10%);
+  background: rgba(37, 37, 37, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.count {
+  position: relative;
+  text-align: center;
+  height: auto;
+  width: 80px;
+}
+
+.count>.indicator{
+  line-height: 40px;
+}
+.count>.max{
+  margin-left: -5px;
+}
+.count>span{
+  margin: 0;
+  
+}
 
 .container{
   overflow-x: hidden !important;
