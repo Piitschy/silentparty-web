@@ -134,27 +134,6 @@
     
                 l3.188-0.62c2.349-0.455,3.371,0.604,3.371,3.462L498.707,542.421L498.707,542.421z"></path></g></g></svg>
 
-        <div  class="status"
-            x-data="{
-                counter: 0,
-                max: 125,
-                show: 80
-            }"
-            x-init="fetch('https://vvk.silentparty-hannover.de/counter')
-                    .then(response => response.json())
-                    .then(data => counter = data.counter)">
-            <div class="traffic glass" v-if="data.workload.data.open" >
-                <div class="count">
-                    <template x-if="show > max - counter">
-                        <span class="indicator" style="font-size: 50px;" x-text="max - counter"/>
-                    </template>
-                    <template x-if="show <= max - counter">
-                        <span class="indicator" style="font-size: 50px;" x-text="show + '+'"></span>
-                    </template>
-                </div>
-                <div class="title">Gutscheine übrig</div>
-            </div>
-        </div>
         <div style="align-self: center;transform: translateY(-90px);">
             <h2 style="/*position: absolute;*/font-size: max(6vw,30pt);">28.05.2022</h2>
             <h3 style="/*position: absolute;*/font-size: max(3vw,20pt);text-align: center;">ab 22:00 Uhr</h3>
@@ -177,19 +156,22 @@
                     src="assets/img/vector.svg" alt="Musik" style="margin-right: 16px;margin-left: 8px;margin-top: 4px;">
                 <div>
                     <h3>Musik<br></h3>
-                    <p>Drei DJs werden uns die Nacht begleiten – einer für jede Musikrichtung. Du kannst an deinem
-                        Kopfhörer wählen, zu welchem von ihnen Du tanzen möchtest. Anhand der Farbe können deine Freunde
-                        sehen, was Du gerade hörst. So fällt es leicht sich auf einen DJ zu einigen.<br><br></p>
+                    <p>Sieben DJs werden uns über die Nacht begleiten – eine*r für jede Musikrichtung zur gleichen Zeit,
+                        sodass du entscheiden kannst, zu welchem Genre du tanzen möchtest. An der Farbe der Kopfhörer
+                        können deine Freund*innen sehen, welchen Channel du gerade hörst.
+                        Wir sind gespannt welche Farbe den Abend für sich entscheiden kann. <br></p>
                 </div>
             </div>
             <div class="col d-flex flex-row features right" style="max-width: 499px;"><img class="d-xl-flex align-self-start"
                     src="assets/img/wallet.svg" alt="Eintritt" style="margin-right: 16px;margin-left: 8px;margin-top: 4px;">
                 <div>
                     <h3>Eintritt<br></h3>
-                    <p>Der EINTRITT der Veranstaltung ist frei und Kopfhörer bekommt ihr gegen eine Mietgebühr <br>von 5€ VVK oder 7€ AK. Zusätzlich nehmen wir
-                        pro Kopfhörer 5€ Pfand. Eintritt ab 16 Jahren mit
-                        Erziehungsauftrag und <br>einer volljährigen Begleitperson (ein Volljähriger darf zwei
-                        <br>Minderjährige mit reinnehmen).<br></p>
+                    <p>Der Einlass auf unsere Veranstaltung ist frei, Kopfhörer bekommst du gegen eine Mietgebühr von 5€
+                        im Vorverkauf oder 7€ an der Abendkasse. Zusätzlich nehmen wir pro Kopfhörer 5€ Pfand,
+                        welche ihr bei Rückgabe der Kopfhörer wieder zurückbekommt.
+                        Einlass wird für alle Personen ab 16 Jahren gewährt. Seid ihr Minderjährig,
+                        kommt bitte mit einer volljährigen Begleitperson und einem Erziehungsauftrag.
+                        Eine Vorlage für einen solchen Nachweis findet ihr hier. Eine volljährige Person darf zwei Minderjährige begleiten. <br></p>
                 </div>
             </div>
         </div>
@@ -200,17 +182,17 @@
                     style="margin-right: 16px;margin-left: 8px;margin-top: 4px;">
                 <div>
                     <h3>Ort<br></h3>
-                    <p>Die Location für unsere Veranstaltung ist zentral in der <a href="https://goo.gl/maps/WeeyXYKUAQfkfSd9A">Lutherkirche</a> der Nordstadt. Neben <br>einer Menge Platz zum
-                        Tanzen, einer Bar und professioneller Licht- und <br>Tontechnik erwarten Euch eine gemütliche
-                        Chillout-Lounge, um Euch <br>zwischendurch eine Pause auf unserem Event zu gönnen, sowie ein eingeleuteter
-                        Fotobereich.<br> Für Garderobenmöglichkeiten ist selbstverständlich auch gesorgt.<br></p>
+                    <p>Die Location der Silent Party Hannover ist die <a href="https://goo.gl/maps/WeeyXYKUAQfkfSd9A">Lutherkirche</a> in mitten der Nordstadt.
+                        Neben einer Menge Platz zum Tanzen, unserem ehrenamtlichen Team und professioneller Licht- und Tontechnik erwartet
+                        dich ein eingeleuchteter Fotobereich sowie eine gemütliche Chill-Lounge, um sich zwischendurch eine Pause zu gönnen.
+                        Für eine Garderobe ist selbstverständlich gesorgt. <br></p>
                 </div>
             </div>
             <div class="col d-flex flex-row features right" style="max-width: 499px;"><img class="d-xl-flex align-self-start"
                     src="assets/img/corona.svg" alt="Hygiene" style="margin-right: 16px;margin-left: 8px;margin-top: 4px;">
                 <div>
                     <h3>Infos und Hygiene<br></h3>
-                    <p>Aufgrund der sich schnell ändernden Auflagen geben wir unser Hygienekonzept für die Veranstaltung, erst im laufe der nächsten Wochen bekannt.</p>
+                    <p>Aufgrund der aktuellen Infektionslage entfallen alle Sicherheitsmaßnahmen. Wie sonst überall auch, ist es euch selbst überlassen, eine Maske zu tragen oder darauf zu verzichten. Bitte lasst in diesem Punkt alle Gäste für sich selbst entscheiden.  </p>
                 </div>
             </div>
         </div>
@@ -225,11 +207,8 @@
     <div class="container-fluid content-container" id="ehrenamt"
         style="background: linear-gradient(180deg, #111 0%, rgba(17,17,17,0) 20%), linear-gradient(0deg, #111 0%, rgba(17,17,17,0) 20%), linear-gradient(270deg, #111 40%, rgba(17,17,17,0) 80%), url(&quot;assets/img/img_0103_2.png&quot;) -32vw / cover no-repeat, #111;padding-top: 105px;max-height: 100vw;">
         <div style="height: 900px;margin-left: auto;width: 40%;">
-            <h2>Die Party</h2>
-            <p style="margin-left: 27px;font-size: 18px;margin: 20px; margin-right: 10vw;">Silentparty Hannover - Ein Floor, drei Genres gleichzeitig,
-                 mehrere Djs über die Nacht verteilt und du mittendrin.
-                  Hierzu schnappst du dir einen Kopfhörer gegen einen vor Ort oder vorweg gekauften Gutschein und tanzt mit bis zu 300 weiteren im exklusiven Ambiente der historischen Lutherkirche in der Nordstadt Hannovers. Wir, als ehrenamtliches Team,
-                 ermöglichen euch eine Veranstaltung in der ihr entscheidet was ihr hört.</p>
+            <h2>Gutscheine für die Kopfhöherer</h2>
+            <p style="margin-left: 27px;font-size: 18px;margin: 20px; margin-right: 10vw;">Gutscheine standen und stehen bereits im Vornhinein zur Verfügung. Termine hierfür werden auf unserem Instagram Kanal bekannt gegeben. Aber natürlich können Gutscheine auch direkt auf der Party erworben werden. </p>
         </div>
     </div>
     <div class="container d-xl-flex flex-column justify-content-xl-center align-items-xl-center content-container">
@@ -255,8 +234,7 @@
         <h2 class="d-flex justify-content-center">Kopfhörer</h2>
         <img src="assets/img/hps_1.png" alt="Kopfhörer" style="width: 90vw; max-width: 1240px;">
         <h3 class="d-flex justify-content-center">Unsere eingenen Kopfhörer</h3>
-        <p style="font-size: 18px;text-align: center;">Die speziellen Kopfhörer der Silentparty Hannover ermöglichen dir ein ganz neues Feiern. Du selbst kannst jederzeit zwischen den drei Kanälen an deinem Kopfhörer switchen und somit entscheiden zu welchem DJ und Genre du deine Nacht auf unserem Event erleben möchtest. Jeder Kanal hat eine Farbe, die am Rand der Kopfhörer leuchtet und dir somit anzeigt wer noch zu deiner Musk tanzt.
-            Deinen Kopfhörer erhältst du, wenn du vorweg oder einfach direkt auf der Veranstaltung einen Gutschein kaufst und diesen gegen ihn einlöst.</p>
+        <p style="font-size: 18px;text-align: center;">Die speziellen Kopfhörer der Silent Party Hannover ermöglichen dir ein ganz neues Feiern. Du selbst kannst jederzeit zwischen den drei Kanälen an deinem Kopfhörer wechseln und somit entscheiden zu welchem*r DJ und Genre du deine Nacht erleben möchtest. Jeder Kanal hat eine Farbe, die am Rand der Kopfhörer leuchtet und dir somit anzeigt, wer zu der gleichen Musik tanzt. Deinen Kopfhörer erhältst du im Tausch gegen den vorweg erworbenen Gutschein und einem kleinem Pfand. </p>
     </div>
     <div class="container-fluid d-flex flex-row align-items-xxl-end content-container"
         style="margin-bottom: 0;background: linear-gradient(177deg, #111111 21%, white);">
