@@ -1,3 +1,8 @@
+import { Directus } from '@directus/sdk';
+
+const directus = new Directus('https://cms.silentparty-hannover.de');
+console.log(directus)
+
 const app = Vue.createApp({
   data() {
     return {
