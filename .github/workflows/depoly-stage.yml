@@ -1,0 +1,29 @@
+on:
+  push:
+    branches: [ main ]
+
+name: deploy on demo
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Set TAG
+      run: |
+        TAG=$(date +%s)
+        IMG=ghcr.io/${GITHUB_REPOSITORY@L}/nginx
+        echo "TAG=$TAG" >> $GITHUB_ENV
+        echo "IMG=$IMG" >> $GITHUB_ENV
+        
+    - uses: actions/checkout@v4
+    - name: Log in to ghcr.io
+      run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      
+    - name: Build the Docker image
+      run: docker build -t ${{ env.IMG }}:${{env.TAG}} .
+
+    - name: Push image to GHCR
+      run: docker push ${{ env.IMG }} --all-tags
+
+    - name: Pull Webhook
+      run: curl -X POST -k ${{vars.WEBHOOK}}?VERSION_TAG=${{env.TAG}}

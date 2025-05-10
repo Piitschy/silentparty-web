@@ -1,20 +1,35 @@
 version: '3'
 services:
-  lap:
-    image: fauria/lap:latest
-    restart: always
-    ports:
-      - ${PORT_SPACE}80:80
-    volumes:
-      - lap:/var/www/html
-  lap-demo:
-    image: fauria/lap:latest
-    restart: always
-    ports:
-      - ${PORT_SPACE}81:80
-    volumes:
-      - lap-demo:/var/www/html
+  nginx:
+    image: ghcr.io/piitschy/silentparty-web/nginx:${RELEASE_TAG:-latest}
+    networks:
+      - traefik-public
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.port=80"
+        - "traefik.http.routers.${STACKNAME}-nuxt.rule=Host(`silentparty-hannover.de`)"
+        - "traefik.http.routers.${STACKNAME}-nuxt.entrypoints=web,websecure"
+        - "traefik.http.routers.${STACKNAME}-nuxt.tls=true"
+        - "traefik.http.routers.${STACKNAME}-nuxt.tls.certresolver=letsencrypt"
+        - "traefik.http.services.${STACKNAME}-nuxt.loadbalancer.server.port=80"
 
-volumes:
-  lap:
-  lap-demo:
+  nginx-demo:
+    image: ghcr.io/piitschy/silentparty-web/nginx:${VERSION_TAG:-latest}
+    networks:
+      - traefik-public
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.port=80"
+        - "traefik.http.routers.${STACKNAME}-nuxt.rule=Host(`demo.silentparty-hannover.de`)"
+        - "traefik.http.routers.${STACKNAME}-nuxt.entrypoints=web,websecure"
+        - "traefik.http.routers.${STACKNAME}-nuxt.tls=true"
+        - "traefik.http.routers.${STACKNAME}-nuxt.tls.certresolver=letsencrypt"
+        - "traefik.http.services.${STACKNAME}-nuxt.loadbalancer.server.port=80"
+
+networks:
+  traefik-public:
+    driver: overlay
+    external: true
+    attachable: true
