@@ -8,11 +8,11 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.port=80"
-        - "traefik.http.routers.${STACKNAME}-nuxt.rule=Host(`silentparty-hannover.de`)"
-        - "traefik.http.routers.${STACKNAME}-nuxt.entrypoints=web,websecure"
-        - "traefik.http.routers.${STACKNAME}-nuxt.tls=true"
-        - "traefik.http.routers.${STACKNAME}-nuxt.tls.certresolver=letsencrypt"
-        - "traefik.http.services.${STACKNAME}-nuxt.loadbalancer.server.port=80"
+        - "traefik.http.routers.silentparty-web.rule=Host(`silentparty-hannover.de`)"
+        - "traefik.http.routers.silentparty-web.entrypoints=web,websecure"
+        - "traefik.http.routers.silentparty-web.tls=true"
+        - "traefik.http.routers.silentparty-web.tls.certresolver=letsencrypt"
+        - "traefik.http.services.silentparty-web.loadbalancer.server.port=80"
 
   nginx-demo:
     image: ghcr.io/piitschy/silentparty-web/nginx:${VERSION_TAG:-latest}
@@ -22,11 +22,11 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.port=80"
-        - "traefik.http.routers.${STACKNAME}-nuxt.rule=Host(`demo.silentparty-hannover.de`)"
-        - "traefik.http.routers.${STACKNAME}-nuxt.entrypoints=web,websecure"
-        - "traefik.http.routers.${STACKNAME}-nuxt.tls=true"
-        - "traefik.http.routers.${STACKNAME}-nuxt.tls.certresolver=letsencrypt"
-        - "traefik.http.services.${STACKNAME}-nuxt.loadbalancer.server.port=80"
+        - "traefik.http.routers.silentparty-web-demo.rule=Host(`demo.silentparty-hannover.de`)"
+        - "traefik.http.routers.silentparty-web-demo.entrypoints=web,websecure"
+        - "traefik.http.routers.silentparty-web-demo.tls=true"
+        - "traefik.http.routers.silentparty-web-demo.tls.certresolver=letsencrypt"
+        - "traefik.http.services.silentparty-web-demo.loadbalancer.server.port=80"
 
 networks:
   traefik-public:
