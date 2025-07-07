@@ -36,7 +36,7 @@ let spinner = document.querySelector("#spinner");
 const updateImage = index => {
   img.src = currentFrame(index);
   img.onload=function(){
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    //context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(img, 0, 0);
   }  
 }
