@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow Circle with Glow</title>
+    <style>
+        :root {
+            --progress-degree: 290deg;
+        }
+
+        body {
+            margin: 0;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .circle-wrapper {
+            filter: saturate(3) brightness(14)blur(20px);
+            z-index: 4;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+
+        .circle-wrapperr {
+
+
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+
+        .glow-ring,
+        .circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(red, orange, yellow, green, cyan, blue, violet, red);
+            mask: conic-gradient(black 0deg var(--progress-degree),
+                    transparent var(--progress-degree) 360deg);
+            -webkit-mask: conic-gradient(black 0deg var(--progress-degree),
+                    transparent var(--progress-degree) 360deg);
+        }
+
+        .glow-ring {
+            position: relative;
+            filter: saturate(3) brightness(44) blur(12px);
+            width: 110%;
+            height: 110%;
+            z-index: 4;
+
+
+            mask: conic-gradient(black 0deg var(--progress-degree),
+                    transparent var(--progress-degree) 360deg);
+            -webkit-mask: conic-gradient(white 50deg 60deg,
+                    transparent 850deg 360deg);
+        }
+
+        .circle {
+            z-index: 1;
+        }
+
+        .glow-ring::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: black;
+            border-radius: 50%;
+            z-index: 3;
+        }
+
+        .circle::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: black;
+            border-radius: 50%;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="circle-wrapperr">
+            <div class="circle"></div>
+        </div>
+        <div class="circle-wrapper">
+            <div class="glow-ring"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
