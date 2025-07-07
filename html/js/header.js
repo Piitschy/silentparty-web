@@ -36,7 +36,7 @@ let spinner = document.querySelector("#spinner");
 const updateImage = index => {
   img.src = currentFrame(index);
   img.onload=function(){
-    //context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(img, 0, 0);
   }  
 }
@@ -54,7 +54,7 @@ const updateSpinner = fracion=>{
 
 window.addEventListener('scroll', () => {  
   const scrollTop = html.scrollTop;
-  const maxScrollTop = wrapper.clientHeight*0.8;
+  const maxScrollTop = wrapper.clientHeight*0.6;
   const scrollFraction = scrollTop / maxScrollTop;
   const frameIndex = Math.min(
     frameCount - 1,
@@ -62,8 +62,9 @@ window.addEventListener('scroll', () => {
   );
 
   let spinnerProg = Math.min(1,Math.max(scrollFraction*scrollFraction*3.0 -0.4,0))
-  requestAnimationFrame(() => updateSpinner(spinnerProg));
   requestAnimationFrame(() => updateImage(frameIndex))
+  requestAnimationFrame(() => updateSpinner(spinnerProg));
+
 });
 
 preloadImages()
