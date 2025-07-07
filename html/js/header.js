@@ -6,6 +6,8 @@ const wrapper = document.getElementById("wrapper");
 
 
 const context = canvas.getContext("2d");
+canvas.width=600;
+canvas.height=600;
 
 const frameCount = 61;
 let i = 0;
@@ -15,30 +17,37 @@ const currentFrame = index => (
 )
 
 const imgs = [];
-const preloadImages = () => {
+const preloadImages = async () => {
   for (let i = 0; i < frameCount; i++) {
     const img = new Image();
     img.src = currentFrame(i);
-    imgs[i] = img;
+    img.onload=function(){
+        const canv = new OffscreenCanvas(canvas.width, canvas.height);
+        const ctx = canv.getContext("2d");
+        ctx.drawImage(img, 0, 0,canvas.width,canvas.height);
+        imgs[i] = ctx.getImageData(0, 0, canvas.width, canvas.height)
+    }
+
   }
 };
 
 const img = new Image()
 img.src = currentFrame(0);
-canvas.width=1000;
-canvas.height=1000;
+
 
 
 img.onload=function(){
-  context.drawImage(img, 0, 0,1000,1000);
+  context.drawImage(img, 0, 0,600,600);
 }
   
 let spinner = document.querySelector("#spinner");
 
 const updateImage = index => {
   let img = imgs[index];
-context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(img, 0, 0,1000,1000);
+ // context.clearRect(0, 0, canvas.width, canvas.height);
+ //  context.drawImage(img, 0, 0,1000,1000);
+  context.putImageData(img,0,0)
+
 }
 
 const updateSpinner = fracion=>{
@@ -53,23 +62,26 @@ const updateSpinner = fracion=>{
 }
 
 let lastFrameIndex = -1;
-window.addEventListener('scroll', () => {  
+
+
+
+ window.addEventListener('scroll', () => {  
   const scrollTop = html.scrollTop;
-  const maxScrollTop = wrapper.clientHeight*0.6;
-  const scrollFraction = scrollTop / maxScrollTop;
-  const frameIndex = Math.min(
+const maxScrollTop = wrapper.clientHeight*0.6;
+ const scrollFraction = scrollTop / maxScrollTop;
+   const frameIndex = Math.min(
     frameCount - 1,
-    Math.ceil(scrollFraction * frameCount)
-  );
+     Math.ceil(scrollFraction * frameCount)
+   );
 
   let spinnerProg = Math.min(1,Math.max(scrollFraction*scrollFraction*3.0 -0.4,0))
     requestAnimationFrame(() => updateSpinner(spinnerProg));
 
   if (frameIndex !== lastFrameIndex) {
-    requestAnimationFrame(() => updateImage(frameIndex));
-    lastFrameIndex = frameIndex;
+     requestAnimationFrame(() => updateImage(frameIndex));
+     lastFrameIndex = frameIndex;
   }
 
-}, {passive:true});
+ }, {passive:true});
 
 preloadImages()
