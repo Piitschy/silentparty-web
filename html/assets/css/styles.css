@@ -19,6 +19,45 @@
   height: 100%;
   max-width: 650px;
 }
+    @keyframes dropShadowGlow {
+      0%    { filter: drop-shadow(0 0 10px #ff0000); }
+      14.28% { filter: drop-shadow(0 0 10px #ff9900); }
+      28.56% { filter: drop-shadow(0 0 10px #ffff00); }
+      42.84% { filter: drop-shadow(0 0 10px #33ff00); }
+      57.12% { filter: drop-shadow(0 0 10px #00ffff); }
+      71.40% { filter: drop-shadow(0 0 10px #0066ff); }
+      85.68% { filter: drop-shadow(0 0 10px #cc00ff); }
+      100%  { filter: drop-shadow(0 0 10px #ff0000); }
+    }
+
+
+      @keyframes pulseOffset {
+    30%, 70% {
+      outline-offset: 0;
+    }
+    50% {
+      outline-offset: 8px;
+    }
+  }
+.bg-rainbow{
+    
+    border: 6px solid;
+    border-image-slice: 1;
+    border-width: 2px;
+    transition: all 190ms;
+    cursor: pointer;
+    outline: white solid 1px;
+animation: pulseOffset 4s ease-in-out infinite;
+    outline-offset: 0px;
+
+}
+.bg-rainbow:hover{
+    outline-offset: 5px;
+    animation: none;
+    border-image-source: linear-gradient(170deg, #ff0000, #ff9900, #ffff00, #33ff00, #00ffff, #0066ff, #cc00ff, #ff0000);
+
+}
+
 h1 {
   color: white;
 }
