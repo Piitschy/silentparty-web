@@ -10,8 +10,8 @@ window.mobileCheck = function() {
 const isMobile = window.mobileCheck();
 
 const context = canvas.getContext("2d");
-const default_width = isMobile?700:1000;
-const default_height = isMobile?700:1000;
+const default_width = isMobile?600:1000;
+const default_height = isMobile?600:1000;
 
 canvas.width=default_width*1.8;
 canvas.height=default_height*1.8;
@@ -24,7 +24,7 @@ const currentFrame = index => (
 )
 
 const imgs = [];
-const preloadImages = async () => {
+const preloadImages = () => {
   for (let i = 0; i < frameCount; i++) {
     const w = i<3?default_width*1.8:Math.floor(default_width/((i+100)*0.01));
     const h = i<3?default_height*1.8:Math.floor(default_height/((i+100)*0.01));
@@ -35,6 +35,7 @@ const preloadImages = async () => {
         const ctx = canv.getContext("2d");
         ctx.drawImage(img, 0, 0,w,h);
         imgs[i] = ctx.getImageData(0, 0, w, h)
+        
     }
 
   }
@@ -53,6 +54,13 @@ let spinner = document.querySelector("#spinner");
 
 const updateImage = index => {
   let img = imgs[index];
+  if(!img){
+    setTimeout(() => {
+      updateImage(index);
+    }, 100);
+    return;
+  }
+    
     const w = index<3?default_width*1.8:Math.floor(default_width/((index+100)*0.01));
     const h = index<3?default_height*1.8:Math.floor(default_height/((index+100)*0.01));
  // context.clearRect(0, 0, canvas.width, canvas.height);
